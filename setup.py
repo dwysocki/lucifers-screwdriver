@@ -48,6 +48,11 @@ def setup_package():
             'near earth object',
         ],
         classifiers=[f for f in CLASSIFIERS.split('\n') if f],
+        entry_points={
+            "console_scripts" : [
+                "lucifers-screwdriver = lucifers_screwdriver.cli:main"
+            ]
+        },
         install_requires=[
             'numpy>=1.10.0',
             'matplotlib>=1.5.0',
