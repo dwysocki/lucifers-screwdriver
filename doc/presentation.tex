@@ -1,0 +1,189 @@
+\documentclass{beamer}
+
+% for adding conditionals
+\usepackage{etoolbox}
+
+% for adding note support
+\usepackage{pgfpages}
+% only compile notes if `\def\notes{}` in preamble
+\ifdef{\notes}{\setbeameroption{show notes on second screen}}{}
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+\usefonttheme{serif}
+
+\definecolor{rit@orange}{HTML}{F36E21}
+\definecolor{rit@brown}{HTML}{513127}
+\setbeamercolor{structure}{fg=rit@orange}
+\setbeamercolor{palette primary}{fg=white, bg=rit@brown}
+\setbeamercolor{palette secondary}{fg=rit@brown}
+\setbeamercolor{palette tertiary}{fg=white, bg=rit@orange}
+\setbeamercolor{titlelike}{fg=rit@brown}
+\setbeamercolor{normal text}{fg=rit@brown}
+
+\setbeamertemplate{enumerate}[circle]
+\setbeamertemplate{items}[circle]
+
+\AtBeginSection{\frame{\sectionpage}}
+
+\setbeamertemplate{section page}
+{
+    \begin{centering}
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+}
+
+% remove shadow behind blocks
+\setbeamertemplate{blocks}[rounded][shadow=false]
+% set blocks to use custom color scheme
+\setbeamercolor{block title}{bg=rit@orange,fg=white}
+\setbeamercolor{block body}{bg=black!5,fg=rit@brown}
+% remove shading between block title and body
+\makeatletter
+\pgfdeclareverticalshading[lower.bg,upper.bg]{bmb@transition}{200cm}{%
+  color(0pt)=(lower.bg); color(4pt)=(lower.bg); color(4pt)=(upper.bg)}
+\makeatother
+
+\setbeamercovered{dynamic}
+\beamertemplatetransparentcoveredmedium
+
+\beamertemplatenavigationsymbolsempty
+
+%\logo{\vspace{-0.25cm}\includegraphics[width=1in]{img/tiger_walking_rit_color}}
+\logo{%
+  \makebox[0.95\paperwidth]{%
+    \includegraphics[width=.75in,keepaspectratio]{img/tiger_walking_rit_color}%
+    \hfill%
+    \includegraphics[width=.75in,keepaspectratio]{img/lucifiers-screwdriver-logo}%
+  }%
+}
+
+\pdfpageattr {/Group << /S /Transparency /I true /CS /DeviceRGB>>}
+
+\usepackage{amsmath,amssymb,commath,mathabx,physics,siunitx}
+\usepackage{cclicenses,copyrightbox}
+\usepackage{float,subcaption}
+
+
+
+
+
+\let\svthefootnote\thefootnote
+\textheight 1in
+\newcommand\blankfootnote[1]{%
+  \let\thefootnote\relax\footnotetext{#1}%
+  \let\thefootnote\svthefootnote%
+}
+
+
+\title{Lucifer's Screwdriver}
+
+\author{Daniel Wysocki}
+
+\institute[RIT]{
+  Rochester Institute of Technology
+}
+
+
+\date[04/24/2016]{
+  NASA Space Apps Challenge
+  \\
+  April 23-24, 2016
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Challenge}
+
+  \begin{itemize}
+  \item Develop a:
+    \begin{itemize}
+    \item hypothetical method
+    \item concept note
+    \item simple prototype
+    \end{itemize}
+  \item demonstrating how machine learning can help us avoid the same
+    fate as the dinosaurs.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Solution}
+
+  \begin{center}
+    $k$-Nearest Neighbor classifier to identify
+
+    \vspace{0.25in}
+
+    \textbf{Potentially Hazardous Objects (PHA)}
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}{Potentially Hazardous Objects (PHA)}
+
+  \begin{itemize}
+  \item Two important criteria
+    \begin{enumerate}
+    \item Will it hit us?
+    \item Is it big?
+    \end{enumerate}
+  \item We quantify this with two things
+    \begin{enumerate}
+    \item Minimum Orbit Intersection Distance (MOID) less than
+      $\SI{0.05}{AU}$.
+    \item Infrared brightness exceeds a minimum threshold ($H < 22$).
+    \end{enumerate}
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{MOID Calculation}
+
+  \begin{itemize}
+  \item Take orbital parameters measured by the Minor Planet Center
+    \begin{itemize}
+    \item $a$, $e$, $i$, $\omega$, $\Omega$
+    \end{itemize}
+  \item Use existing simulation software to calculate the MOID between
+    the Earth and each object.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{$k$-NN Classification}
+
+{
+  \Large
+  \begin{displaymath}
+    (a, e, i, \omega, \Omega, H) \overset{k\mathrm{NN}}{\to} \mathrm{PHA?}
+  \end{displaymath}
+}
+
+\end{frame}
+
+
+\begin{frame}{Lucifer's Screwdriver}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{img/lucifiers-screwdriver-logo}
+
+    \url{https://github.com/dwysocki/lucifers-screwdriver/}
+  \end{figure}
+
+  \vfill
+
+\end{frame}
+
+
+
+\end{document}

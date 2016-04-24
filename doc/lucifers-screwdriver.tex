@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+\author{Daniel Wysocki}
+\title{
+  Lucifer's Screwdriver:
+  A machine learning approach to predicting potentially hazardous asteroids
+}
+\date{April 24, 2016}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{graphicx}
+
+\usepackage{amsmath,amssymb,nicefrac,mathtools,physics,siunitx}
+
+\usepackage{hyperref}
+
+\usepackage{caption,subcaption}
+\usepackage{enumerate}
+
+\usepackage{listings,verbatim}
+\usepackage{color,soul}
+
+\usepackage[style=trad-plain,citestyle=authoryear,maxcitenames=3]{biblatex}
+\addbibresource{bibliography.bib}
+
+\DeclareMathOperator{\MOID}{MOID}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+
+
+\end{abstract}
+
+
+\section{Introduction}
+\label{sec:intro}
+
+
+
+\section{Data}
+\label{sec:data}
+
+Orbital and photometric data were obtained from the Minor Planet Center.
+
+
+
+\section{Simulations}
+\label{sec:sim}
+
+Minimum orbit intersection distances (MOID) were obtained by the standard Fortran package written by Giovanni Gronchi. Objects which satisfy $\MOID < \SI{0.05}{AU}$ and $H > 22$ are labeled as potentially hazardous objects (PHO).
+
+
+
+\section{Predictive Model}
+\label{sec:model}
+
+We train a deep neural network on the orbital parameters, with their PHO status as labels. The result is a predictive model, which, given orbital parameters and absolute magnitude, can predict an object's PHO status.
+
+
+
+\section{Results}
+\label{sec:results}
+
+
+
+
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+
+
+
+\end{document}
