@@ -56,6 +56,7 @@ def setup_package():
         install_requires=[
             'numpy>=1.10.0',
             'matplotlib>=1.5.0',
+#            'pandas>=0.18.0',
             'scipy>=0.17.0',
             'scikit-learn>=0.17.1',
         ]
