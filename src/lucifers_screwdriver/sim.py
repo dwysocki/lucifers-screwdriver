@@ -51,12 +51,9 @@ def run_sim(exe, directory):
         sub.run(exe_path, stdout=sub.DEVNULL)
 
 
-def simulate(exe, directory, object_params, earth_params):
-    MOID = np.empty(len(object_params), dtype=float)
-
-    for i in range(len(object_params)):
-        make_input_file(directory, object_params[i], earth_params)
-        run_sim(exe, directory)
-        MOID[i] = read_output_file(directory)
-
-    return MOID
+def simulate(exe, directory, object_params, earth_params, filename):
+    with open(filename, "w") as f:
+        for obj in object_params:
+            make_input_file(directory, obj, earth_params)
+            run_sim(exe, directory)
+            print(read_output_file(directory), file=f)

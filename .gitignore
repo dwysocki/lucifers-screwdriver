@@ -99,6 +99,7 @@ ENV/
 *.fot
 *.cb
 *.cb2
+*-converted-to.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
@@ -108,6 +109,11 @@ ENV/
 *-blx.bib
 *.brf
 *.run.xml
+
+# beamer
+*.nav
+*.snm
+*.vrb
 
 
 

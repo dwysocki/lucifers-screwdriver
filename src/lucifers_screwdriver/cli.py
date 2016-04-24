@@ -6,8 +6,9 @@ import tempfile as temp
 import numpy as np
 from .data import read_mpcorp
 from . import enums as _e
+from . import ml
 from . import sim
-
+from . import threat
 
 def simulate(args, data, earth_data):
     MOID = None
@@ -19,24 +20,30 @@ def simulate(args, data, earth_data):
         else:
             tmpdir = None
 
-        MOID = sim.simulate(args.MOID_exe, args.working_dir,
-                            data, earth_data)
+        sim.simulate(args.MOID_exe, args.working_dir,
+                     data, earth_data, args.MOID_output)
 
     finally:
         if tmpdir is not None:
             tmpdir.close()
 
-    if MOID is not None:
-        print(MOID)
-    else:
-        raise Exception()
 
+def learn(args, data, earth_data):
+    valid_idx = np.isfinite(data[_e.H])
+    data = data[valid_idx]
 
-def train(args, earth_data, data):
-    pass
+    MOID = np.loadtxt(args.MOID_input)[valid_idx]
+    PHA = threat.PHA(MOID, data[_e.H], args.MOID_threshold, args.H_threshold)
 
-def predict(args, earth_data, data):
-    pass
+    clf = ml.train(data, PHA, n_neighbors=args.n_neighbors)
+
+    predictions = clf.predict(ml.features(data))
+
+    completeness, contamination = ml.performance(PHA, predictions)
+
+    print("Completeness  = {:.3}%".format(completeness*100))
+    print("Contamination = {:.3}%".format(contamination*100))
+
 
 
 def get_args():
@@ -47,12 +54,10 @@ def get_args():
     sub_p = p.add_subparsers()
 
     sim_p = sub_p.add_parser("sim", help="Run simulation.")
-    train_p = sub_p.add_parser("train", help="Train model.")
-    predict_p = sub_p.add_parser("predict", help="Make predictions.")
+    learn_p = sub_p.add_parser("learn", help="Train model.")
 
     sim_p.set_defaults(func=simulate)
-    train_p.set_defaults(func=train)
-    predict_p.set_defaults(func=predict)
+    learn_p.set_defaults(func=learn)
 
     p.add_argument(
         "--orbit-data",
@@ -91,11 +96,6 @@ def get_args():
     )
 
 
-    # Earth Parameters
-#    p.add_argument(
-#    )
-
-
     sim_p.add_argument(
         "--MOID-exe", required=True,
         help="MOID simulation executable."
@@ -109,17 +109,24 @@ def get_args():
         help="(Optional) working directory for simulations."
     )
 
+    learn_p.add_argument(
+        "--MOID-input", required=True,
+        help="File to read MOIDs from."
+    )
+    learn_p.add_argument(
+        "--n-neighbors", default=2, type=int,
+        help="Number of neighbors to use (default 2)."
+    )
 
     args = p.parse_args()
 
     return args
 
 
-
 def main():
     args = get_args()
 
-    orbit_data = read_mpcorp(args.orbit_data, skip_header=700000)
+    orbit_data = read_mpcorp(args.orbit_data)
     earth_data = np.rec.array(
         (args.earth_a, args.earth_e, args.earth_i,
           args.earth_longitude_asc_node, args.earth_arg_periapsis),
