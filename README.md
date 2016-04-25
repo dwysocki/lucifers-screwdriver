@@ -77,6 +77,11 @@ Ultimately we find our method to be less effective than we would like. Using `k 
 Still, the basic structure of the method is effective. With the use of a better classifier than kNN, as well as additional features for training, this has the potential to be effective. [Deep Learning](https://en.wikipedia.org/wiki/Deep_learning) is a popular classification method today, due to its powerful capabilities, and if time had permitted, we would have used it instead of kNN.
 
 
+# Name
+
+You have likely wondered why this is called "Lucifer's Screwdriver". It is a play on the title of the 1977 book "Lucifer's Hammer", written by Larry Niven and Jerry Pournelle. The book is about a comet impact destroying civilization on Earth. Our title is an homage to the book, and we elected to use the word "screwdriver" because it is a more precise tool for fixing problems ... okay not really, it just sounded funny.
+
+
 # Credit
 
 Written by Daniel Wysocki
