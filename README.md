@@ -86,6 +86,6 @@ You have likely wondered why this is called "Lucifer's Screwdriver". It is a pla
 
 # Credit
 
-Written by Daniel Wysocki
+Copyright 2016 - [Daniel Wysocki](http://dwysocki.github.io/)
 
-Logo created by Guan-Huei Wu
+Logo created by [Guan-Huei Wu](https://www.behance.net/mystory5)
