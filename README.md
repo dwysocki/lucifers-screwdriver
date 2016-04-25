@@ -1,6 +1,6 @@
 # Lucifer's Screwdriver
 
-![Lucifer's Screwdriver Logo](doc/img/lucifiers-screwdriver-logo.eps)
+![Lucifer's Screwdriver Logo](/doc/img/lucifiers-screwdriver-logo.png)
 
 Lucifer's Screwdriver is a project created for the NASA Space Apps 2016
 challenge: "Near Earth Objects Machine Learning". It was the winner of the "Galactic Problem-Solver" award, at the event hosted by the Rochester Institute of Technology.
@@ -69,8 +69,12 @@ $ lucifers-screwdriver --orbit-data <MPCORB file> \
 
 where `<MPCORB file>` and `<MOID file>` are the same files mentioned earlier, and `<k>` is an integer (1 or greater) representing the number of neighbors to use in the classification. If you set `k = 1`, you are cheating, and will just get the original labels. Setting `k` higher will consider other objects. In practice, you should do the training on one set of objects, and the predictions on another set. Read about [cross validation](https://en.wikipedia.org/wiki/Cross-validation_%28statistics%29) for more on this.
 
-Ultimately we find our method to be less effective than we would like. Using `k = 2` correctly identifies 3.99% of PHA's, and has no false positives. Raising `k` gives progressively worse results. A more complete study should make use of a more advanced classification method. If time had permitted, we would have chosen to use [Deep Learning](https://en.wikipedia.org/wiki/Deep_learning).
 
+# Performance and Improvements
+
+Ultimately we find our method to be less effective than we would like. Using `k = 2` correctly identifies 3.99% of PHA's, and has no false positives. Raising `k` gives progressively worse results.
+
+Still, the basic structure of the method is effective. With the use of a better classifier than kNN, as well as additional features for training, this has the potential to be effective. [Deep Learning](https://en.wikipedia.org/wiki/Deep_learning) is a popular classification method today, due to its powerful capabilities, and if time had permitted, we would have used it instead of kNN.
 
 
 # Credit
