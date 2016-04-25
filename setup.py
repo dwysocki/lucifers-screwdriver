@@ -19,7 +19,7 @@ Topic :: Scientific/Engineering :: Machine Learning
 MAJOR      = 0
 MINOR      = 1
 MICRO      = 0
-ISRELEASED = False
+ISRELEASED = True
 VERSION    = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
 def get_version_info():
@@ -36,7 +36,7 @@ __version__ = get_version_info()
 def setup_package():
     metadata = dict(
         name='lucifers_screwdriver',
-        url='https://github.com/lucifers-screwdriver/lucifers-screwdriver',
+        url='https://github.com/dwysocki/lucifers-screwdriver',
         description=DOCLINES[0],
         long_description="\n".join(DOCLINES[2:]),
         version=__version__,
@@ -55,9 +55,6 @@ def setup_package():
         },
         install_requires=[
             'numpy>=1.10.0',
-            'matplotlib>=1.5.0',
-#            'pandas>=0.18.0',
-            'scipy>=0.17.0',
             'scikit-learn>=0.17.1',
         ]
     )
