@@ -55,6 +55,8 @@ $ lucifers-screwdriver --orbit-data <MPCORB file> \
 
 where `<MPCORB file>` is downloaded from the Minor Planet Center website, `<CP_comp.x>` is the path to the executable mentioned earlier, and `<MOID file>` is the file you'd like to save the calculated MOIDs to.
 
+(Note: we make use of "Allen's Astrophysical Quantities", 4th Edition, by Arthur N. Cox for the orbital parameters of Earth. ISBN 978-1-4612-1186-0)
+
 
 # Machine Learning with k-Nearest Neighbor
 
