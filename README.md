@@ -7,6 +7,8 @@ challenge: "Near Earth Objects Machine Learning". It was the winner of the "Gala
 
 This is a proof-of-concept for using machine learning to identify Potentially Hazardous Asteroids (PHA). The standard definition of a PHA is an asteroid whose closest approach to Earth is below a threshold, and whose brightness is over a threshold. We use an existing tool to compute the distance of closest approach from orbital parameters reported by the Minor Planet Center, and then train a supervised classifier to identify the PHAs.
 
+[Youtube Video](https://www.youtube.com/watch?v=cBQzAnGjzi4)
+[NASA Space Apps 2016](https://2016.spaceappschallenge.org/challenges/solar-system/near-earth-objects-machine-learning/projects/lucifers-screwdriver)
 
 # Installing
 
@@ -86,6 +88,6 @@ You have likely wondered why this is called "Lucifer's Screwdriver". It is a pla
 
 # Credit
 
-Copyright 2016 - [Daniel Wysocki](http://dwysocki.github.io/)
-
-Logo created by [Guan-Huei Wu](https://www.behance.net/mystory5)
+Coding: [Daniel Wysocki](http://dwysocki.github.io/)
+Video: Juan Lachapelle, [Justin Flory](https://github.com/jflory7), and [Daniel Wysocki](http://dwysocki.github.io/)
+Logo: [Guan-Huei Wu](https://www.behance.net/mystory5)
